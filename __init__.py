@@ -30,6 +30,18 @@ CONFIG_SCHEMA = vol.Schema({
     vol.Optional('app'): APP_NAME,
 })
 
+def isfloat(num):
+    try:
+        float(num)
+        return True
+    except ValueError:
+        return False
+
+def safefloat(num, defVal):
+    try:
+        return float(num)
+    except ValueError:
+        return defVal
 
 def seconds_human(seconds):
     seconds_in_min = 60
