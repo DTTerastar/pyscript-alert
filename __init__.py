@@ -26,7 +26,7 @@ CONFIG_SCHEMA = vol.Schema({
     vol.Optional('mute', default="False"): str,
     vol.Optional('done_message', default=''): str,
     vol.Optional('delay', default=0): vol.Any(int, float),
-
+    vol.Optional('cron', default="* * * * *"): str,
     vol.Optional('app'): APP_NAME,
 })
 
@@ -104,6 +104,7 @@ def make_alert(config):
     @task_unique(alert_entity)
     @state_trigger(f'True or {config["condition"]} or {config["mute"]}')
     @time_trigger('startup')
+    @time_active(f'cron({config["cron"]})')
     def alert():
         try:
             alert_count = float(state.get(f'{alert_entity}.count'))
