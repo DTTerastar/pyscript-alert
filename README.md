@@ -33,7 +33,7 @@ These are the configuration keys:
 > Time in **minutes** between each alert.
 >
 > ```
-> minutes: 5
+> interval: 5
 > ```
 
 > **notifier** (required)
