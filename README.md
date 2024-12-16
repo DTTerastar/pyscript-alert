@@ -36,6 +36,13 @@ These are the configuration keys:
 > minutes: 5
 > ```
 
+> **cron** 
+> Cron expression for when this alert is active
+>
+> ```
+> cron: "* 6 * * 1-5" # only active M-F 6a to 6:59a
+> ```
+
 > **notifier** (required)
 >
 > The name of the `notify.` service that should be used for notifications. The domain should not be included.
